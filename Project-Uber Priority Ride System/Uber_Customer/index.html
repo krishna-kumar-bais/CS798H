@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uber Clone</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Uber</h1>
+
+    <!-- Dark Mode Toggle Button -->
+<!--     <div class="dark-toggle" onclick="toggleDarkMode()" id="theme-toggle">🌙</div> -->
+
+    <div class="search-bar">
+      <span class="icon">🔍</span>
+      <input type="text" placeholder="Where to?" onclick="window.location.href='plan.html'">
+      <button class="later-btn">📅 Later</button>
+    </div>
+
+    <div class="recent-location">
+      <span class="clock-icon">🕒</span>
+      <div>
+        <h4>Hospital & health care</h4>
+        <p>GC-22 C7, Panki Rd...</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="suggestions">
+    <div class="section-header">
+      <h2>Services</h2>
+    </div>
+
+    <div class="options">
+      <div class="option" ><img src="auto.png" alt="Auto"/><p>Auto</p></div>
+      <div class="option" ><img src="ride.png" alt="Ride"/><p>Ride</p></div>
+      <div class="option" ><img src="moto.png" alt="Moto"/><p>Moto</p></div>
+      <div class="option" ><img src="intercity.png" alt="Intercity"/><p>Intercity</p></div>
+      <div class="option" ><img src="rental.png" alt="Rentals"/><p>Rentals</p></div>
+      <div class="option" ><img src="reserve.png" alt="Reserve"/><p>Reserve</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <nav class="footer-nav">
+      <button class="nav-btn active" onclick="window.location.href='index.html'">🏠<br>Home</button>
+      <button class="nav-btn" onclick="window.location.href='activity.html'">📋<br>Activity</button>
+      <button class="nav-btn" onclick="window.location.href='profile.html'">👤<br>Account</button>
+    </nav>
+  </footer>
+  </footer>
+
+  <!-- Dark Mode Script -->
+<!--   <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("dark-mode", isDark);
+      document.getElementById("theme-toggle").textContent = isDark ? "☀️" : "🌙";
+    }
+
+    window.onload = function () {
+      const isDark = localStorage.getItem("dark-mode") === "true";
+      if (isDark) {
+        document.body.classList.add("dark");
+        document.getElementById("theme-toggle").textContent = "☀️";
+      }
+    };
+  </script> -->
+</body>
+</html>

@@ -1,0 +1,539 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #000;
+  }
+  
+  header {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: #eee;
+    border-radius: 20px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .search-bar input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .later-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+  }
+  
+  .recent-location {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .recent-location h4 {
+    margin: 0;
+  }
+  
+  .recent-location p {
+    margin: 0;
+    color: gray;
+  }
+  
+  .clock-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    align-items: center;
+  }
+  .option {
+    text-align: center;
+  }
+  
+  
+  .option img {
+    width: 100%;
+  }
+  
+  .promo span {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: green;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 8px;
+  }
+  
+  .daily-offers {
+    padding: 1rem;
+  }
+  
+  .offers {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .card {
+    width: 48%;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  footer nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #ddd;
+    padding: 0.5rem 0;
+  }
+  
+  footer button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+  }
+  
+  footer .active {
+    font-weight: bold;
+  }
+  
+  .see-all {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  /* Services section layout */
+.services-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Individual service option */
+.option {
+  background-color: #f2f2f2;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.option:hover {
+  transform: scale(1.05);
+}
+
+.option img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.option p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Promo badge (optional styling if you use it) */
+.option.promo::before {
+  content: "Promo";
+  display: inline-block;
+  background-color: #1dbf73;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* Responsive header text */
+header h1 {
+  font-size: 28px;
+  margin: 20px;
+}
+
+header p {
+  margin: 0 20px 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.plan-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.plan-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.ride-options {
+  padding: 1rem;
+}
+
+.top-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.option-btn {
+  flex: 1;
+  padding: 0.7rem;
+  background: #eee;
+  border-radius: 16px;
+  border: none;
+  font-size: 1rem;
+}
+
+.location-box {
+  position: relative;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.location-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.location-row input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+}
+
+.dot-icon {
+  font-size: 1.2rem;
+}
+
+.add-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #f2f2f2;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.6rem;
+  border: none;
+}
+
+.location-suggestions .location-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.location-item h4 {
+  margin: 0;
+}
+
+.location-item p {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.loc-icon {
+  font-size: 1.3rem;
+  margin-right: 1rem;
+}
+.input-card {
+  border: 1px solid #000;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 16px;
+  background: #fff;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+
+
+/* Dark mode toggle button */
+.dark-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+body.dark .dark-toggle {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Light mode defaults (unchanged) */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.search-bar {
+  padding: 10px;
+  background: #f2f2f2;
+  border-radius: 10px;
+}
+
+.input-card {
+  background: #fff;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.option {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+}
+
+.option-btn {
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+  color: black;
+}
+
+.recent-location {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.add-btn {
+  background: #e0e0e0;
+  color: black;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+footer nav {
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+nav button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.see-all {
+  color: black;
+  text-decoration: underline;
+}
+
+/* Dark mode overrides */
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark .search-bar {
+  background: #222;
+}
+
+body.dark .input-card {
+  background: #1a1a1a;
+}
+
+body.dark .option {
+  background-color: #1e1e1e;
+}
+
+body.dark .option-btn {
+  background: #2a2a2a;
+  color: white;
+}
+
+body.dark .recent-location {
+  background: #1e1e1e;
+}
+
+body.dark .add-btn {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+body.dark footer nav {
+  background: #121212;
+  border-top: 1px solid #333;
+}
+
+body.dark nav button {
+  color: #ccc;
+}
+
+body.dark .see-all {
+  color: white;
+}
+
+body.dark .location-box {
+  border-color: #444;
+  background-color: #1e1e1e;
+}
+
+body.dark .location-item p {
+  color: #bbb;
+}
+/* Footer nav bar */
+    .footer-nav {
+      display: flex;
+      justify-content: space-around;
+      padding: 0;
+      border-top: 1px solid #ccc;
+      background: #fff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px; /* Make footer bar fixed height */
+    }
+
+    /* Base styles for nav buttons */
+    .nav-btn {
+      background: #fff; /* White background */
+      border: none;
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      padding: 15px;
+      flex-grow: 1;
+      border-radius: 30px; /* Rounded shape */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s, color 0.3s;
+      height: 100%; /* Fill entire height of footer bar */
+    }
+
+    /* Active button style */
+    .nav-btn.active {
+      color: #000;
+      font-weight: bold;
+      background-color: #f0f0f0; /* Light gray background for active state */
+    }
+
+    /* Optional: When the button is focused or clicked */
+    .nav-btn:focus {
+      outline: none;
+      background-color: #e0e0e0; /* Slightly darker background on focus */
+    }
+    body.dark footer nav {
+      background: #121212; /* Dark background for footer */
+      border-top: 1px solid #333; /* Dark border for footer */
+    }
+    
+    body.dark nav button {
+      color: #ccc; /* Light text for footer buttons in dark mode */
+    }
+    
+    body.dark .nav-btn.active {
+      background-color: #333; /* Active button background in dark mode */
+      color: #fff; /* Light text for active buttons in dark mode */
+    }
+    /* Dark mode styles for the footer navigation */
+body.dark footer nav {
+  background: #121212; /* Dark background for the footer */
+  border-top: 1px solid #333; /* Dark border on top */
+}
+
+body.dark nav button {
+  color: #ccc; /* Light color for button text */
+  background: #121212; /* Dark background for buttons in dark mode */
+}
+
+body.dark .nav-btn {
+  background: #121212; /* Ensure all nav buttons have a dark background */
+  color: #ccc; /* Text color for the nav buttons */
+}
+
+body.dark .nav-btn.active {
+  background-color: #333; /* Darker background for active button */
+  color: #fff; /* Light text color for active button */
+}
+
+body.dark .nav-btn:hover {
+  background-color: #444; /* Darker hover effect */
+  color: #fff; /* Light text color on hover */
+}
+
+
