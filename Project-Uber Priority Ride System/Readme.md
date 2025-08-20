@@ -1,5 +1,8 @@
 Project-Uber Priority Ride System Deployed Links:
 
-User : https://uber-customer.onrender.com
+Customer : https://krishna-kumar-bais.github.io/Customer-UI/
+<!-- https://uber-customer.onrender.com-->
 
-Driver : https://driver-ui.onrender.com
+Driver : https://krishna-kumar-bais.github.io/Driver-UI/
+<!-- https://driver-ui.onrender.com -->
+
