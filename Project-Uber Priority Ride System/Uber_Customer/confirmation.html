@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ride Confirmed</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px 70px;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .animation-wrapper {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .spinner {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 4px solid green;
+      border-radius: 50%;
+      clip-path: inset(0 0 0 50%);
+      animation: spin 2s linear forwards;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(720deg); }
+    }
+
+    .full-circle {
+      width: 100px;
+      height: 100px;
+      border: 4px solid green;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    .done-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      font-size: 48px;
+      color: green;
+      opacity: 0;
+      transition: all 0.6s ease;
+    }
+
+    .done-icon.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .details {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .enjoy {
+      margin-top: 15px;
+      font-size: 18px;
+      color: green;
+      font-weight: bold;
+      display: none;
+    }
+
+    .cancel-button {
+      margin-top: 15px;
+      font-size: 16px;
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+
+    .priority {
+      margin-top: 10px;
+      font-size: 25px;
+      color: blue;
+      font-weight: bold;
+      display: none;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    footer nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5rem 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    footer button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      flex: 1;
+      padding: 5px;
+    }
+
+    footer .active {
+      font-weight: bold;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(128, 128, 128, 0.8);
+    }
+
+    .modal-content {
+      background-color: white;
+      color: black;
+      margin: 20% auto;
+      padding: 20px;
+      border: 2px solid black;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content button {
+      margin: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .yes-btn {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+
+    .no-btn {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+    .big-fare {
+      font-size: 20px;
+      font-weight: bold;
+      color: black;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <h1>Your ride is booked!</h1>
+
+  <div class="animation-wrapper">
+    <div class="spinner" id="spinner"></div>
+    <div class="full-circle" id="fullCircle"></div>
+    <div class="done-icon" id="checkmark">✔️</div>
+  </div>
+
+  <div class="details" id="rideDetails"></div>
+  <div class="priority" id="priorityNote">Priority Ride</div>
+  <div class="enjoy" id="enjoyMessage"></div>
+  <button class="cancel-button" id="cancelRideBtn" onclick="openModal()">Cancel Ride</button>
+
+  <!-- Modal -->
+  <div id="cancelModal" class="modal">
+    <div class="modal-content">
+      <p id="cancelMessage"></p>
+      <button class="yes-btn" onclick="confirmCancel()">Yes</button>
+      <button class="no-btn" onclick="redirectHome()">No</button>
+    </div>
+  </div>
+
+  <footer>
+    <nav>
+      <button class="nav-btn active" onclick="window.location.href='index.html'">🏠<br>Home</button>
+      <button class="nav-btn" onclick="window.location.href='activity.html'">📋<br>Activity</button>
+      <button class="nav-btn" onclick="window.location.href='profile.html'">👤<br>Account</button>
+    </nav>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ride = params.get("ride") || "Unknown";
+    const drop = params.get("drop") || "Not specified";
+    const fareString = params.get("fare") || "₹0.00";
+    const fare = parseFloat(fareString.replace(/[^\d.]/g, ''));
+    const pickup = "Your Location";
+
+    const baseFares = {
+  "Moto": 115,
+  "Auto": 198,
+  "Cab": 345,
+  "Uber Go": 260,
+  "Go Sedan": 420,
+  "Go SUV": 480
+};
+
+    const base = baseFares[ride];
+    const expectedPriorityFare = base ? base * 1.25 : 0;
+    const isPriority = Math.abs(fare - expectedPriorityFare) < 0.01;
+
+    document.getElementById("rideDetails").innerHTML = `
+      <span class="big-fare">Fare: ₹${fare.toFixed(2)}</span>
+
+      <br>
+      <strong>Ride Type:</strong> ${ride}<br>
+      <strong>Pickup:</strong> ${pickup}<br>
+      <strong>Destination:</strong> ${drop}<br>
+    `;
+
+
+    setTimeout(() => {
+      document.getElementById("spinner").style.display = "none";
+      document.getElementById("fullCircle").style.display = "block";
+      document.getElementById("checkmark").classList.add("show");
+      document.getElementById("enjoyMessage").style.display = "block";
+      document.getElementById("cancelRideBtn").style.display = "inline-block";
+      if (isPriority) {
+        document.getElementById("priorityNote").style.display = "block";
+      }
+    }, 2000);
+
+    function openModal() {
+      const message = isPriority
+        ? "<h3>Do you want to cancel the ride?</h3><br>100% penalty will be applied."
+        : "<h3>Do you want to cancel the ride?</h3>";
+      document.getElementById("cancelMessage").innerHTML = message;
+      document.getElementById("cancelModal").style.display = "block";
+    }
+
+    function confirmCancel() {
+      alert("Your ride has been cancelled.");
+      window.location.href = "index.html";
+    }
+
+    function redirectHome() {
+      document.getElementById("cancelModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
